@@ -13,6 +13,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project "$GCLOUD_PROJECT_NAME" 
   - gcloud config set compute/zone us-central1-a
+  - gcloud auth application-default login  
   - gcloud container clusters get-credentials "$GCLOUD_GET_CREDENTIALS"
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t ekolmakov/react-test -f ./client/Dockerfile.dev ./client
